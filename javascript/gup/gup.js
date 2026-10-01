@@ -526,50 +526,50 @@
   const caseStudySteps = [
     {
       label: 'Overview',
-      title: 'A homepage with one clear job',
+      title: 'I Gave the Homepage One Clear Job',
       target: null,
       copy: [
-        'Gamers Ultra Plus is a retail-focused redesign inspired by Renegade Game Studios. I rebuilt the homepage around one responsibility: helping shoppers discover, compare, and buy games without unrelated company content competing for attention.'
+        'I led the redesign of Gamers Ultra Plus around one focus: helping shoppers discover, compare, and buy games. The real-world site had content everywhere—some of which probably didn’t need to be there. Using UI/UX and AI-assisted implementation, I stripped it down, rebuilt it, and gave the homepage clearer purpose.',
       ]
     },
     {
-      label: 'Discovery',
-      title: 'Reduce the work of finding a game',
+      label: 'Product Discovery',
+      title: 'I Reduced the Work of "Finding a Product"',
       target: '.search',
       copy: [
-        'Search gives shoppers a direct route into the catalogue, while collection filters support browsing by intent. Together, they turn discovery into a focused retail task instead of another competing navigation path.'
+        'I gave shoppers two direct discovery paths: search for a known title and collection filters for browsing by intent. That keeps finding a game focused instead of adding another competing navigation path.'
       ]
     },
     {
-      label: 'Retail priority',
-      title: 'Make the primary action obvious',
+      label: 'Considering Intent',
+      title: 'Making a CTA Decision',
       target: '.hero',
       copy: [
-        'The hero gives one product and one purchase path clear priority. That immediately defines the homepage as a retail experience, while secondary messages stay out of the way.'
+        'I made the hero product’s purchase path the clear priority, establishing the homepage as a retail experience without competing messages. I chose “Order Now” with a future direct-purchase flow in mind, but its current cart behavior challenged that wording—a small example of how even simple CTA decisions rarely have one perfect answer.'
       ]
     },
     {
-      label: 'Comparison',
-      title: 'Keep product decisions scannable',
+      label: 'Product Comparison',
+      title: 'I Kept Product Decisions Scannable',
       target: '#product-grid',
       copy: [
-        'Product cards expose only what matters for comparison: artwork, category, title, price, and availability. Deeper details appear on demand, keeping the catalogue quick to scan without removing useful information.'
+        'I limited each product card to what shoppers need for quick comparison: artwork, category, title, price, and availability. Deeper details moved into an on-demand view, keeping the catalogue easy to scan. This came from experimenting with familiar patterns and showed me that better experiences do not always require reinventing the wheel.'
       ]
     },
     {
-      label: 'Information architecture',
-      title: 'Give secondary content a proper home',
+      label: 'Information Architecture',
+      title: 'I Gave Secondary Content A Home',
       target: '.site-footer',
       copy: [
-        'Support, company information, policies, and newsletter content remain available in the footer. The functionality stays; the competition for attention does not. Placement becomes part of the product hierarchy.'
+        'I kept support, company information, policies, and newsletter content in the footer so they stayed available without competing with shopping tasks. The functionality remained, but the hierarchy became clearer. Experimentation won again here, with the placement helping users find answers and explore further when they needed to.'
       ]
     },
     {
       label: 'Outcome',
-      title: 'Less competition, clearer responsibility',
+      title: 'Clearer Hierarchy, Clearer Responsibility',
       target: null,
       copy: [
-        'The result is a clearer retail experience with stronger hierarchy, faster discovery, and cleaner comparison. It reflects how I work: find the source of complexity, set priorities, then make the product easier to understand.'
+        'For the homepage, I focused on creating a clearer retail experience with stronger hierarchy, faster discovery, and easier comparison. My contribution was deciding what the homepage needed to priorities, then carrying those decisions through the interface and into the front-end prototype.'
       ]
     }
   ];

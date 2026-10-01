@@ -39,12 +39,12 @@
     {
       path: "/page/holix-ai/",
       title: "HOLIX Ai",
-      subtitle: "Independent Product Design Project",
+      subtitle: "Independent UI/UX Design Project",
     },
     {
       path: "/page/gup/",
       title: "Gamers Ultra Plus",
-      subtitle: "E-commerce Product Design Project",
+      subtitle: "E-commerce Web Design Project",
     },
   ];
 
