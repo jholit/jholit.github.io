@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------------------
+   Shared large-screen motion
+   -------------------------------------------------------------------------- */
+
+:root {
+  --site-page-transition-duration: 340ms;
+  --site-modal-transition-duration: 300ms;
+  --site-modal-enter-easing: ease-out;
+  --site-modal-exit-easing: ease-in;
+  --site-modal-travel: 12px;
+  --site-modal-scale: 0.985;
+}
+
+@media (min-width: 75rem) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body {
+    animation: site-page-dissolve-in var(--site-page-transition-duration) linear
+      both;
+  }
+
+  .concept-modal {
+    transition:
+      opacity var(--site-modal-transition-duration) var(--site-modal-exit-easing),
+      visibility 0s linear var(--site-modal-transition-duration);
+  }
+
+  .concept-modal.is-open {
+    transition:
+      opacity var(--site-modal-transition-duration) var(--site-modal-enter-easing),
+      visibility 0s linear 0s;
+  }
+
+  .concept-modal__dialog {
+    transform:
+      translateY(calc(var(--concept-modal-optical-offset) + var(--site-modal-travel)))
+      scale(var(--site-modal-scale));
+    transition: transform var(--site-modal-transition-duration)
+      var(--site-modal-exit-easing);
+  }
+
+  .concept-modal.is-open .concept-modal__dialog {
+    transform: translateY(var(--concept-modal-optical-offset)) scale(1);
+    transition-timing-function: var(--site-modal-enter-easing);
+  }
+}
+
+@keyframes site-page-dissolve-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
