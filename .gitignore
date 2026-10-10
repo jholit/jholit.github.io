@@ -1,0 +1,12 @@
+# Local editor, OS, and development output
+.DS_Store
+Thumbs.db
+Desktop.ini
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+node_modules/
+playwright-report/
+test-results/
+*.log

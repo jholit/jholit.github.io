@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/* Shared return navigation for the three project pages. */
+
+:root {
+  --project-navigation-height: 49px;
+}
+
+.project-navigation {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--project-navigation-height);
+  flex: 0 0 var(--project-navigation-height);
+  border-bottom: 1px solid rgb(194 206 217 / 18%);
+  color: #c2ced9;
+  background: #10151d;
+  font: 600 .82rem/1.6 Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.project-navigation__inner {
+  width: min(100% - 96px, 1440px);
+  margin-inline: auto;
+}
+
+.project-navigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+.project-navigation a:hover {
+  color: #e3b958;
+}
+
+.project-navigation a:focus-visible {
+  outline: 3px solid #e3b958;
+  outline-offset: 5px;
+}
+
+@media (max-width: 760px) {
+  .project-navigation__inner {
+    width: min(100% - 38px, 1440px);
+  }
+}
+
+@media (max-width: 1079px), (pointer: coarse) {
+  .project-navigation a {
+    min-height: 44px;
+  }
+}

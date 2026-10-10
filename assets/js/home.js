@@ -25,7 +25,10 @@
         if (label) label.textContent = "Copy email";
       }, 2500);
     } catch {
-      status.textContent = "Copy unavailable. Please try again.";
+      window.clearTimeout(resetTimer);
+      copyButton.classList.remove("is-copied");
+      if (label) label.textContent = "Copy email";
+      status.textContent = `Copy unavailable. Email: ${email}`;
     }
   });
 })();

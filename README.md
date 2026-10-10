@@ -1,43 +1,51 @@
 # Jaqweal Holit — Web Design Portfolio
 
-Static HTML, CSS, and JavaScript. No package installation or build step is required.
+**Current version: v4.1.0**
 
-## Structure
+My portfolio brings together selected web design work focused on content organization, information architecture, visual hierarchy, navigation, and interaction design. It includes a real-world website redesign and two independent prototypes, with case studies explaining the problem, my contribution, the design decisions, and the observable changes.
 
-| Path | Purpose |
+The site pairs concise case studies with working project pages so visitors can read the reasoning and explore the resulting interfaces. It also introduces my background, capabilities, tools, and contact information.
+
+## Featured work
+
+| Project | Type | What to explore |
+| --- | --- | --- |
+| 01 — Software Developer Portfolio | Real-world website redesign | Jon Buresh's portfolio, redesigned from a limited brief to prioritize three featured games, clarify project information, and bring supporting work, experience, and contact into one page. |
+| 02 — Gamers Ultra Plus | Independent storefront redesign | A responsive retail prototype built around game discovery and comparison, with search, filters, product details, and a demonstration cart. |
+| 03 — HOLIX Ai | Independent AI workspace concept | An interactive interface exploring how navigation, files, projects, tools, and controls can support a familiar chat experience without overwhelming it. |
+
+## What's new in v4.1.0
+
+- Added a real-world redesign: Integrated the Software Developer Portfolio showcase and its case study into the portfolio.
+- Updated the featured project and order: Software Developer Portfolio now leads the homepage as the featured project and Project / 01, followed by GUP as Project / 02 and HOLIX Ai as Project / 03.
+- Refreshed project previews: Added the developer portfolio preview and replaced GUP and HOLIX Ai previews with updated screenshots, stored as lossless WebP images.
+- Unified return navigation: All three project pages now include “← Back to selected work,” linking directly to their corresponding homepage case study.
+- Removed presentation guides: Removed GUP's walkthrough and HOLIX Ai's yellow focus effect and related controls, leaving the case studies and interfaces to present the work.
+- Cleaned up the codebase: Removed unused code and assets, simplified the folder structure, aligned file naming, and refined existing interaction code.
+- Added HOLIX Ai phone and tablet layouts: Removed the larger-device-only notice, introduced a labeled phone menu and compact tablet navigation, and adapted the conversation, composer, tools modal, and contextual panels.
+- Refined responsive layouts: Improved smaller-screen navigation, product grids, dialogs, cart rows, and footer layouts in GUP, plus project titles, facts, experience, and navigation in the developer portfolio.
+- Strengthened accessibility: Improved heading structure, skip links, field labels, keyboard focus and focus return, dialog dismissal, live feedback, reduced-motion behavior, and forced-color support, targeting WCAG 2.2 Level AA.
+- Organized project source files: Placed each project's styles and scripts beside its HTML, separated responsive styles, and centralized shared accessibility utilities. Reformatted HTML and CSS and removed redundant declarations and unused style tokens.
+- Refined interactions and repaired UI issues: Simplified HOLIX panel states and focus containment, batched frequent layout updates, and cached GUP elements and search records. Fixed desktop composer focus visibility, inconsistent sidebar portrait sizing, chat-list overflow handling, and stale clipboard success feedback.
+- Prepared the project for further development: Added editor formatting conventions, extended source checks, and documented integration and validation. Preserved page URLs, content, and all 21 referenced image assets without adding a build dependency.
+
+Source, syntax, preservation, and isolated interaction checks passed. Visual browser, real-device, and assistive-technology verification remain pending; WCAG conformance has not been established. See [validation notes](docs/VALIDATION.md).
+
+## Built with
+
+HTML, CSS, and vanilla JavaScript. The site requires no package installation or build step. AI-assisted implementation supports the workflow, with design direction, content, hierarchy, and interface refinement guided manually.
+
+## Repository layout
+
+| Path | Contents |
 | --- | --- |
-| `index.html` | Homepage and the three project case studies |
-| `page/software-developer-portfolio/` | Software developer portfolio showcase |
-| `page/gup/` | Gamers Ultra Plus interactive storefront prototype |
-| `page/holix-ai/` | HOLIX Ai interactive workspace prototype |
-| `page/jholit/` | Compatibility redirect to the homepage About section |
-| `assets/css/` | Page styles, shared motion, and shared return navigation |
-| `assets/js/` | Homepage, GUP, and HOLIX Ai interaction code |
-| `assets/images/previews/` | Lossless screenshots used on the homepage |
-| `assets/images/portfolio/` | Homepage background, portrait, and favicons |
-| `assets/images/gup/` | Storefront product artwork |
-| `assets/images/holix-ai/` | Workspace portrait |
-| `assets/images/software-developer-portfolio/` | Developer branding and game artwork |
-| `assets/licenses/` | Existing third-party icon licenses |
-
-The project names match their page folders, stylesheets, scripts, and image groups. The homepage uses `home.css` and `home.js`. Project styles remain separate so they cannot override the homepage or each other. All three project pages share `project-navigation.css` and return directly to their corresponding homepage case study.
-
-## Local preview
-
-From this directory, run `python3 -m http.server 8000` and open `http://localhost:8000/`. Use an HTTP server rather than opening HTML files directly.
-
-## GitHub Pages
-
-Publish **this directory's contents**, including the root `index.html` and `.nojekyll`, from the selected branch and folder in the repository's Pages settings. Do not place the outer `portfolio` folder inside the publishing root. `.nojekyll` keeps the site on the direct static publishing path. Relative asset and navigation links work both at a domain root and beneath a repository subpath.
-
-## Development notes
-
-- Edit case-study copy and project order in the root `index.html`. Project / 01 is Software Developer Portfolio, Project / 02 is GUP, and Project / 03 is HOLIX Ai.
-- Edit each prototype's HTML, stylesheet, and script separately.
-- GUP preserves the existing `gamers-ultra-plus-cart-v1` local-storage key, demonstration cart, dialogs, search, filters, and newsletter feedback. It does not process purchases.
-- HOLIX Ai preserves its desktop prototype and existing small-screen notice. Its return navigation remains available on small screens. The composer and sidebar fit the viewport below the shared navigation bar.
-- Google Fonts and the developer showcase's employer logos remain external resources. The developer's game manual and Stashery links open their existing external pages. Its email icon remains a display-only placeholder.
-- Homepage preview screenshots were encoded as lossless WebP without resizing or changing their pixels. Other artwork is retained.
-- Keep the About redirect for older incoming links. Keep the icon license files with the distributed project.
-
-This cleanup does not publish the site or change repository settings. Browser visual testing still requires a local browser; static and interaction-fixture checks do not replace that review.
+| `index.html` | Portfolio homepage, case studies, capabilities, About, and contact |
+| `page/` | Individual project pages with their own styles and scripts, and the compatibility redirect for the earlier About page |
+| `assets/css/` | Homepage styles and shared accessibility, motion, and return-navigation styles |
+| `assets/js/` | Homepage email-copy interaction |
+| `assets/images/` | Project previews, artwork, portraits, branding, and favicons |
+| `assets/licenses/` | Third-party icon licenses |
+| `docs/` | Change history, accessibility notes, validation results, and integration guidance |
+| `tools/` | Dependency-free source and local-reference checks |
+| `.editorconfig` | Shared text formatting conventions for future edits |
+| `.nojekyll` | GitHub Pages configuration for publishing the static folder directly |

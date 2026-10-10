@@ -1,0 +1,658 @@
+/* Responsive layouts and user preferences. Desktop foundations are in styles.css. */
+
+@media (max-height: 720px) and (min-width: 1080px) {
+  .hub-modal__dialog {
+    height: calc(100dvh - 40px);
+    max-height: calc(100dvh - 40px);
+  }
+
+  .hub-modal__header {
+    padding-top: 20px;
+    padding-bottom: 16px;
+    gap: 14px;
+  }
+
+  .hub-source-section {
+    padding-top: 16px;
+    padding-bottom: 18px;
+  }
+
+  .hub-source-row {
+    min-height: 76px;
+    padding-block: 11px;
+  }
+}
+
+@media (max-height: 680px) and (min-width: 1080px) {
+  .sidebar-panel {
+    padding-block: 10px;
+    gap: 11px;
+  }
+}
+
+@media (max-width: 1279px) and (min-width: 1080px) {
+  :root {
+    --workspace-start-gutter: clamp(20px, 2.4vw, 28px);
+    --workspace-end-gutter: clamp(16px, 1.8vw, 24px);
+    --thread-inline-gutter: clamp(20px, 2.6vw, 32px);
+  }
+
+  .chat-thread {
+    gap: 18px;
+  }
+
+  .holix-message + .user-message {
+    margin-top: 20px;
+  }
+
+  .composer-model-settings {
+    gap: var(--space-2);
+  }
+
+  .hub-modal__dialog {
+    width: min(calc(100vw - 64px), 1120px);
+  }
+
+  .hub-tools-nav {
+    width: clamp(176px, 18vw, 206px);
+    padding-inline: 12px;
+    flex-basis: clamp(176px, 18vw, 206px);
+  }
+
+  .hub-modal__header {
+    padding: 24px 56px 18px 24px;
+    gap: 16px;
+  }
+
+  .hub-source-section {
+    padding: 18px 24px 22px;
+  }
+
+  .hub-source-row {
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 0.42fr);
+    gap: 14px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 1080px) {
+  :root {
+    --composer-height: 148px;
+    --chat-top-padding: 32px;
+    --composer-bottom-gap: 20px;
+  }
+
+  .chat-thread {
+    gap: 16px;
+  }
+
+  .holix-message + .user-message {
+    margin-top: 16px;
+  }
+}
+
+/* Compact workspaces: fluid conversation, in-flow composer, bounded panels. */
+
+@media (max-width: 1079px) {
+  :root {
+    --sidebar-width: 72px;
+    --workspace-start-gutter: 0px;
+    --workspace-end-gutter: 0px;
+    --thread-inline-gutter: 20px;
+    --chat-top-padding: 24px;
+    --chat-content-width: 100%;
+    --chat-user-width: 100%;
+    --chat-holix-width: 100%;
+    --chat-bubble-width: 100%;
+    --composer-content-width: 100%;
+  }
+
+  body {
+    height: var(--viewport-height, 100dvh);
+  }
+
+  .sidebar-panel {
+    padding: 16px 12px;
+    gap: 12px;
+  }
+
+  .profile-block,
+  .profile-image {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+
+  .chat-thread {
+    padding-bottom: 24px;
+    scrollbar-width: thin;
+  }
+
+  .chat-thread::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .holix-message {
+    padding-left: 16px;
+  }
+
+  .composer-dock,
+  .chat-workspace.is-composer-hidden:not(.is-composer-revealed, :focus-within) .composer-dock {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    flex: 0 0 auto;
+    padding: 12px 16px max(12px, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border-subtle);
+    background: var(--workspace-bg);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .new-chat-btn {
+    position: static;
+    flex: 0 0 44px;
+    margin-top: 12px;
+  }
+
+  .composer-area {
+    flex: 1 1 auto;
+  }
+
+  .composer-model-settings {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding: 0;
+  }
+
+  .chat-input {
+    display: block;
+    min-height: 68px;
+    max-height: 120px;
+    padding: 20px 56px;
+  }
+
+  .composer-icon-btn,
+  .composer-send-btn {
+    width: 44px;
+    height: 44px;
+    top: 12px;
+  }
+
+  .composer-icon-btn {
+    left: 6px;
+  }
+
+  .composer-send-btn {
+    right: 6px;
+  }
+
+  .model-menu {
+    width: min(320px, calc(100vw - var(--sidebar-width) - 48px));
+    max-height: min(320px, calc(var(--viewport-height, 100dvh) - 200px));
+    overflow-y: auto;
+  }
+
+  .model-mode-toggle {
+    min-height: 44px;
+  }
+
+  .model-select-trigger {
+    min-height: 44px;
+  }
+
+  .chat-list-panel {
+    overflow-y: auto;
+  }
+
+  .chat-list-panel__new,
+  .chat-list-panel__remove {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .search-popout {
+    overflow-y: auto;
+  }
+
+  .concept-modal {
+    --concept-modal-optical-offset: 0px;
+    padding: 12px;
+  }
+
+  .hub-modal__dialog {
+    width: 100%;
+    height: min(720px, calc(var(--viewport-height, 100dvh) - 24px));
+    max-height: calc(var(--viewport-height, 100dvh) - 24px);
+  }
+
+  .hub-tools-nav {
+    width: 164px;
+    flex-basis: 164px;
+    padding: 24px 12px;
+  }
+
+  .hub-source-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .hub-source-section__heading {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hub-source-section__meta {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .hub-select-all,
+  .hub-source-active {
+    min-height: 44px;
+  }
+
+  .hub-modal__close,
+  .hub-filter__trigger {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hub-filter__item {
+    min-height: 44px;
+  }
+}
+
+/* Smartphones: labelled navigation drawer and a single-column tools dialog. */
+
+@media (max-width: 600px) {
+  :root {
+    --sidebar-width: 0px;
+    --mobile-toolbar-height: 56px;
+    --thread-inline-gutter: 16px;
+    --chat-top-padding: 20px;
+  }
+
+  .prototype-shell {
+    flex-direction: column;
+  }
+
+  .mobile-toolbar {
+    min-height: var(--mobile-toolbar-height);
+    flex: 0 0 var(--mobile-toolbar-height);
+    padding: 4px 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--nav-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .mobile-toolbar__title {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .mobile-toolbar__actions {
+    display: flex;
+  }
+
+  .mobile-toolbar .new-chat-btn {
+    margin: 0;
+  }
+
+  #workspace-navigation-toggle,
+  .mobile-navigation-close,
+  .compact-panel-close {
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-xs);
+    background: var(--surface-raised);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: .875rem;
+  }
+
+  #workspace-navigation-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-navigation-close {
+    width: 100%;
+  }
+
+  .mobile-navigation-close span,
+  .compact-panel-close span {
+    font-size: 1.4rem;
+  }
+
+  .sidebar-panel {
+    position: fixed;
+    inset: calc(var(--project-navigation-height) + var(--mobile-toolbar-height)) auto 0 0;
+    width: min(280px, calc(100vw - 32px));
+    min-width: 0;
+    height: auto;
+    padding: 16px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    align-items: stretch;
+    visibility: hidden;
+    transform: translateX(-105%);
+    transition: transform var(--transition-base), visibility var(--transition-base);
+    z-index: 100;
+  }
+
+  .prototype-shell.is-navigation-open .sidebar-panel {
+    visibility: visible;
+    transform: none;
+  }
+
+  .prototype-shell.is-navigation-open .navigation-backdrop {
+    display: block;
+    position: fixed;
+    inset: calc(var(--project-navigation-height) + var(--mobile-toolbar-height)) 0 0;
+    background: rgb(0 0 0 / 65%);
+    z-index: 90;
+  }
+
+  .sidebar-panel .profile-block {
+    align-self: center;
+  }
+
+  .sidebar-divider {
+    width: 100%;
+  }
+
+  .search-popout-anchor {
+    width: 100%;
+    height: auto;
+    flex-basis: auto;
+  }
+
+  .section-list > li {
+    width: 100%;
+    height: auto;
+  }
+
+  .section-item,
+  .collapsed-search-btn {
+    width: 100%;
+    min-height: 48px;
+    padding: 8px 12px;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .mobile-sidebar-label {
+    display: inline;
+    font-size: .875rem;
+    line-height: 1.4;
+  }
+
+  .section-item::after,
+  .collapsed-search-btn::after,
+  .chat-panel-trigger::after,
+  .sidebar-popup {
+    display: none;
+  }
+
+  .workspace-stage {
+    height: auto;
+    flex: 1 1 auto;
+  }
+
+  .chat-workspace {
+    height: auto;
+    flex: 1 1 auto;
+  }
+
+  .user-message {
+    gap: 8px;
+  }
+
+  .message-avatar {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .user-message .message-content {
+    max-width: calc(100% - 36px);
+  }
+
+  .user-text {
+    padding: 10px 12px;
+  }
+
+  .holix-message {
+    padding-left: 0;
+  }
+
+  .holix-response {
+    padding-left: 12px;
+  }
+
+  .composer-dock {
+    padding-inline: 12px;
+  }
+
+  .current-model-divider,
+  .current-model-label {
+    display: none;
+  }
+
+  .model-mode-toggle {
+    width: 100%;
+  }
+
+  .model-mode-label {
+    padding: 0 4px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .model-menu {
+    width: min(320px, calc(100vw - 32px));
+    max-height: min(280px, calc(var(--viewport-height, 100dvh) - 170px));
+  }
+
+  .search-popout,
+  .chat-list-panel {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: calc(var(--project-navigation-height) + var(--mobile-toolbar-height) + 12px);
+    width: auto;
+    max-height: calc(var(--viewport-height, 100dvh) - var(--project-navigation-height) - var(--mobile-toolbar-height) - 24px);
+    overflow-y: auto;
+    z-index: 200;
+  }
+
+  .compact-panel-close {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .search-control-row {
+    flex-wrap: wrap;
+  }
+
+  .search-field {
+    flex-basis: 100%;
+  }
+
+  .search-filter-btn {
+    min-height: 44px;
+  }
+
+  .search-popout.has-query .search-results {
+    max-height: none;
+  }
+
+  .search-result-copy > span {
+    white-space: normal;
+  }
+
+  .chat-list-panel__list {
+    overflow-y: auto;
+  }
+
+  .concept-modal {
+    padding: 8px;
+  }
+
+  .hub-modal__dialog {
+    height: calc(var(--viewport-height, 100dvh) - 16px);
+    max-height: calc(var(--viewport-height, 100dvh) - 16px);
+  }
+
+  .hub-modal__layout {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .hub-tools-nav {
+    width: 100%;
+    flex: 0 0 auto;
+    padding: 16px 60px 12px 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hub-tools-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hub-tools-nav__item {
+    padding-inline: 8px;
+  }
+
+  .hub-tools-nav__eyebrow {
+    margin-left: 8px;
+  }
+
+  .hub-modal__close {
+    top: 8px;
+    right: 8px;
+  }
+
+  .hub-modal__frame {
+    flex: 0 0 auto;
+  }
+
+  .hub-modal__header {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .hub-modal__intro {
+    gap: 12px;
+  }
+
+  .hub-modal__apps-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .hub-source-section {
+    padding: 16px;
+  }
+
+  .hub-source-list {
+    overflow: visible;
+    flex: 0 0 auto;
+  }
+
+  .hub-source-row {
+    padding: 12px;
+  }
+
+  .hub-source-row__name-line {
+    flex-wrap: wrap;
+  }
+}
+
+/* Landscape phones and keyboards reduce vertical space, not available features. */
+
+@media (max-height: 500px) and (max-width: 1079px) {
+  .sidebar-panel {
+    gap: 6px;
+    padding-block: 8px;
+  }
+
+  .sidebar-panel .profile-block,
+  .sidebar-divider {
+    display: none;
+  }
+
+  .composer-dock {
+    padding-block: 6px;
+  }
+
+  .chat-input {
+    min-height: 56px;
+    padding-block: 14px;
+  }
+
+  .composer-icon-btn,
+  .composer-send-btn {
+    top: 6px;
+  }
+
+  .chat-thread {
+    padding-top: 16px;
+  }
+
+  .model-mode-toggle,
+  .model-select-trigger {
+    min-height: 36px;
+  }
+}
+
+/* Large tablets can retain the desktop arrangement with comfortable touch controls. */
+
+@media (pointer: coarse) and (min-width: 1080px) {
+  .composer-model-settings {
+    flex-wrap: wrap;
+  }
+
+  .model-select-trigger,
+  .model-mode-toggle,
+  .hub-select-all {
+    min-height: 44px;
+  }
+
+  .chat-list-panel__new,
+  .chat-list-panel__remove,
+  .hub-modal__close {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+}
+
+@media (max-width: 1079px) {
+  .concept-modal {
+    height: var(--viewport-height, 100dvh);
+    bottom: auto;
+  }
+}
