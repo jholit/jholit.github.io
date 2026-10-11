@@ -14,9 +14,9 @@ The target is [WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/). This is an imp
 
 Existing prototype limits remain: GUP does not place orders or submit newsletter addresses; HOLIX does not connect to AI services, upload files, or record audio. Its File Library and My Projects buttons remain navigation previews.
 
-## Contrast samples
+## Historical contrast samples (before the GUP replacement)
 
-Calculated using the WCAG relative-luminance formula on source colour pairs. These samples do not measure pixels over photographs, gradients, opacity, or every interaction state.
+These samples belong to the earlier portfolio validation. GUP-specific samples have not been recalculated for the incoming replacement. Calculated using the WCAG relative-luminance formula on source colour pairs. These samples do not measure pixels over photographs, gradients, opacity, or every interaction state.
 
 | Pair | Ratio |
 | --- | ---: |
@@ -41,3 +41,7 @@ Verify rendered contrast over artwork and all hover/focus/open states before mak
 - [Reflow, SC 1.4.10](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)
 - [Target size, SC 2.5.8](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
 - Keyboard access, focus visibility and order, names/roles/states, and status messages are covered by the linked WCAG recommendation.
+
+## GUP replacement — 10 October 2026
+
+The incoming GUP retains its own accessibility stylesheet, labelled fields, native dialogs, favorites states, reduced-motion handling, and responsive touch rules. Shared return navigation is loaded on both pages. Current source and simulated interaction checks are described in [VALIDATION.md](VALIDATION.md); these are not rendered contrast checks or conformance certification.

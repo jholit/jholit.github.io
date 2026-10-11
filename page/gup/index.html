@@ -20,17 +20,21 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="../../assets/css/shared/motion.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/products.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/dialogs.css">
+    <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="../../assets/css/shared/project-navigation.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="../../assets/css/shared/accessibility.css">
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <script src="../../assets/js/site.js" defer></script>
   </head>
-  <body>
+  <body data-page="home" data-site-root="./">
     <a class="skip-link" href="#main">Skip to content</a>
     <nav class="project-navigation" aria-label="Project navigation">
       <div class="project-navigation__inner">
-        <a href="../../index.html#gup-project">&larr; Back to selected work</a>
+        <a href="../../#gup-project">&larr; Back to selected work</a>
       </div>
     </nav>
     <!-- Reusable interface icons. Product artwork lives in assets/images. -->
@@ -38,6 +42,12 @@
       <symbol id="i-search" viewBox="0 0 24 24">
         <circle cx="10.5" cy="10.5" r="6.5"/>
         <path d="m16 16 5 5"/>
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
       </symbol>
       <symbol id="i-person" viewBox="0 0 24 24">
         <circle cx="12" cy="7.5" r="3.5"/>
@@ -69,16 +79,20 @@
     <header class="site-header">
       <div class="header-main page-width">
         <div class="brand-navigation">
-          <a class="wordmark" href="#" aria-label="Gamers Ultra Plus home"> <span>GAMERS</span> <span>ULTRA<span class="brand-plus">+</span></span> </a>
+          <a class="wordmark" href="./" aria-label="Gamers Ultra Plus home"> <span>GAMERS</span> <span>ULTRA<span class="brand-plus">+</span></span> </a>
           <nav class="primary-nav" aria-label="Primary navigation">
-            <a href="#collection" data-nav-filter="all">Browse</a>
-            <a href="#collection" data-nav-filter="new">New Arrivals</a>
-            <a href="#collection" data-nav-filter="popular">Popular Games</a>
-            <a href="#collection" data-nav-filter="featured">Recommendations</a>
+            <a href="browse/">Browse</a>
+            <a href="browse/?collection=new">New Arrivals</a>
+            <a href="browse/?collection=popular">Popular Games</a>
+            <a href="browse/?collection=featured">Recommendations</a>
           </nav>
         </div>
         <div class="header-actions">
-          <button class="header-action" type="button" data-info="account" aria-label="Account">
+          <a class="header-action favorites-link" href="browse/?favorites=1#collection" aria-label="View favorites">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+            <span>Favorites</span><span class="cart-count" data-favorites-count>0</span>
+          </a>
+          <button class="header-action account-action" type="button" data-info="account" aria-label="Account">
             <svg class="icon" aria-hidden="true">
               <use href="#i-person"/>
             </svg>
@@ -96,6 +110,17 @@
             </svg>
             <span>Cart</span>
             <span class="cart-count" id="cart-count">0</span>
+          </button>
+          <button
+            class="header-action mobile-menu-toggle"
+            id="open-mobile-menu"
+            type="button"
+            aria-label="Open menu"
+            aria-haspopup="dialog"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
           </button>
         </div>
       </div>
@@ -117,22 +142,45 @@
         </form>
       </div>
     </header>
+    <dialog
+      class="mobile-menu"
+      id="mobile-menu"
+      aria-labelledby="mobile-menu-title"
+      data-close-animation="mobile-menu-out"
+    >
+      <div class="mobile-menu-heading">
+        <h2 id="mobile-menu-title">MENU</h2>
+        <button class="close-button" type="button" data-close aria-label="Close menu" autofocus>
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <nav class="mobile-menu-nav" aria-label="Mobile navigation">
+        <a class="mobile-menu-link" href="browse/">Browse</a>
+        <button class="mobile-menu-link" type="button" disabled aria-label="New Arrivals, coming soon">New Arrivals</button>
+        <button class="mobile-menu-link" type="button" disabled aria-label="Popular Games, coming soon">Popular Games</button>
+        <button class="mobile-menu-link" type="button" disabled aria-label="Recommendations, coming soon">Recommendations</button>
+        <button class="mobile-menu-link" type="button" data-menu-account>Account</button>
+      </nav>
+    </dialog>
+    <p class="sr-only" id="favorites-status" role="status" aria-live="polite"></p>
     <main id="main" tabindex="-1">
       <section class="hero page-width" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span class="small-rule"></span> A new adventure awaits</p>
           <h1 id="hero-title">WILD ATLAS</h1>
           <p class="hero-description">A little exploration. A little friendly rivalry.<br class="desktop-break"> Discover Wild Atlas, your next reason to<br class="desktop-break"> bring everyone to the table.</p>
-          <button class="button button-primary" type="button" data-product="wild-atlas">
-            View details
-            <svg class="icon" aria-hidden="true">
-              <use href="#i-arrow"/>
-            </svg>
-          </button>
+          <div class="hero-actions">
+            <button class="button button-primary" type="button" data-product="wild-atlas">
+              View details
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"/>
+              </svg>
+            </button>
+          </div>
         </div>
         <figure class="hero-visual">
           <img
-            src="../../assets/images/gup/wild-atlas.webp"
+            src="assets/images/wild-atlas.webp"
             alt="Wild Atlas: an illustrated wilderness board game with a forest-green box, map board, and wooden playing pieces."
             width="1200"
             height="800"
@@ -147,7 +195,7 @@
         </div>
         <div class="collection-controls">
           <div class="filters" role="group" aria-label="Filter games">
-            <button class="filter active" type="button" data-filter="all" aria-pressed="true">All games</button>
+            <button class="filter active" type="button" data-filter="all" aria-pressed="true">All Games</button>
             <button class="filter" type="button" data-filter="new" aria-pressed="false">New</button>
             <button class="filter" type="button" data-filter="featured" aria-pressed="false">Featured</button>
             <button class="filter" type="button" data-filter="popular" aria-pressed="false">Popular</button>
@@ -156,109 +204,7 @@
         </div>
         <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
         <div class="product-grid" id="product-grid">
-          <!-- script.js reads product records from these cards, keeping content in one place. -->
-          <article
-            class="product-card"
-            data-id="wild-atlas"
-            data-name="Wild Atlas"
-            data-price="48"
-            data-collection="new featured"
-            data-keywords="strategy exploration adventure map wilderness family"
-            data-players="2–4"
-            data-time="45–60"
-            data-age="10+"
-            data-stock="in"
-            data-description="Chart a path through an untamed landscape. Gather resources, connect distant landmarks, and build the most rewarding expedition. An approachable strategy game with a different journey every time you play."
-          >
-            <button
-              class="product-image"
-              type="button"
-              data-product="wild-atlas"
-              aria-label="View Wild Atlas"
-            > <span class="badge">New arrival</span> <img src="../../assets/images/gup/wild-atlas.webp" alt="Wild Atlas game box and components" width="1200" height="800" loading="lazy"> </button>
-            <p class="product-type">Strategy · Exploration</p>
-            <div class="product-title-row">
-              <h3><button type="button" data-product="wild-atlas">Wild Atlas</button></h3>
-              <span class="price">$48.00</span>
-            </div>
-            <div class="product-bottom">
-              <span class="availability">In stock</span>
-            </div>
-          </article>
-          <article
-            class="product-card"
-            data-id="sunroom"
-            data-name="Sunroom"
-            data-price="36"
-            data-collection="new featured"
-            data-keywords="family nature plants garden tile laying relaxed"
-            data-players="2–4"
-            data-time="25–35"
-            data-age="8+"
-            data-stock="in"
-            data-description="Make a little room for something green. Arrange plants, catch the best light, and grow a greenhouse full of character. A relaxed tile-laying game with quick turns and plenty of satisfying little decisions."
-          >
-            <button class="product-image" type="button" data-product="sunroom" aria-label="View Sunroom"> <span class="badge">New arrival</span> <img src="../../assets/images/gup/sunroom.webp" alt="Sunroom game box with a warm illustrated greenhouse and foliage" width="900" height="900" loading="lazy"> </button>
-            <p class="product-type">Family · Tile laying</p>
-            <div class="product-title-row">
-              <h3><button type="button" data-product="sunroom">Sunroom</button></h3>
-              <span class="price">$36.00</span>
-            </div>
-            <div class="product-bottom">
-              <span class="availability">In stock</span>
-            </div>
-          </article>
-          <article
-            class="product-card"
-            data-id="orbital"
-            data-name="Orbital"
-            data-price="54"
-            data-collection="featured popular"
-            data-keywords="strategy space science planets engine building"
-            data-players="1–4"
-            data-time="60–90"
-            data-age="12+"
-            data-stock="in"
-            data-description="Build a network at the edge of the solar system. Balance precious resources, develop your space station, and time your next launch. A thoughtful engine-building game for solo explorers and competitive crews alike."
-          >
-            <button class="product-image" type="button" data-product="orbital" aria-label="View Orbital"> <span class="badge">Popular</span> <img src="../../assets/images/gup/orbital.webp" alt="Orbital game box with illustrated celestial rings on a navy cover" width="900" height="900" loading="lazy"> </button>
-            <p class="product-type">Strategy · Engine building</p>
-            <div class="product-title-row">
-              <h3><button type="button" data-product="orbital">Orbital</button></h3>
-              <span class="price">$54.00</span>
-            </div>
-            <div class="product-bottom">
-              <span class="availability">In stock</span>
-            </div>
-          </article>
-          <article
-            class="product-card"
-            data-id="after-hours"
-            data-name="After Hours"
-            data-price="28"
-            data-collection="popular"
-            data-keywords="party social cards music jazz city friends"
-            data-players="3–8"
-            data-time="20–30"
-            data-age="14+"
-            data-stock="out"
-            data-description="The lights are low, the music is good, and everyone has a story. Read the room, trade clues, and find your people in a quick-playing social card game made for evenings that run a little longer."
-          >
-            <button
-              class="product-image"
-              type="button"
-              data-product="after-hours"
-              aria-label="View After Hours"
-            > <img src="../../assets/images/gup/after-hours.webp" alt="After Hours game box with an illustrated burgundy and gold jazz bar" width="900" height="900" loading="lazy"> </button>
-            <p class="product-type">Party · Social</p>
-            <div class="product-title-row">
-              <h3><button type="button" data-product="after-hours">After Hours</button></h3>
-              <span class="price">$28.00</span>
-            </div>
-            <div class="product-bottom">
-              <span class="availability unavailable">Out of stock</span>
-            </div>
-          </article>
+          <!-- Rendered from assets/js/catalog.js on both pages. -->
         </div>
         <div class="empty-state" id="empty-state" hidden>
           <h3>No games found.</h3>
@@ -266,7 +212,7 @@
           <button class="button button-secondary" id="reset-search" type="button">Show all games</button>
         </div>
         <noscript>
-          <p class="noscript-note">Enable JavaScript to search games, view details, or try the demonstration cart.</p>
+          <p class="noscript-note">Enable JavaScript to see the catalogue, search games, view details, and try the demonstration cart.</p>
         </noscript>
       </section>
     </main>
@@ -300,10 +246,10 @@
           </div>
           <div class="footer-column">
             <h3>Explore</h3>
-            <a href="#collection" data-nav-filter="all">All games</a>
-            <a href="#collection" data-nav-filter="new">New arrivals</a>
-            <a href="#collection" data-nav-filter="popular">Popular Games</a>
-            <a href="#collection" data-nav-filter="featured">Our picks</a>
+            <a href="browse/">All Games</a>
+            <a href="browse/?collection=new">New arrivals</a>
+            <a href="browse/?collection=popular">Popular Games</a>
+            <a href="browse/?collection=featured">Our picks</a>
           </div>
           <div class="footer-column">
             <h3>Here to help</h3>
@@ -332,7 +278,7 @@
         </div>
         <div class="footer-bottom page-width">
           <div>
-            <a class="footer-wordmark" href="#" aria-label="Gamers Ultra Plus home">GAMERS ULTRA<span>+</span></a>
+            <a class="footer-wordmark" href="./" aria-label="Gamers Ultra Plus home">GAMERS ULTRA<span>+</span></a>
             <p>© <span id="year">2026</span> Gamers Ultra Plus</p>
           </div>
           <p class="footer-credit">Designed by <b>Jaqweal Holit</b> | Developed with <b>AI assistance</b></p>
@@ -341,13 +287,12 @@
               <button type="button" data-info="privacy">Privacy</button>
               <button type="button" data-info="terms">Notices &amp; Policies</button>
               <button type="button" data-info="cookies">Cookies</button>
-              <a href="../../">Return to portfolio</a>
             </div>
           </div>
         </div>
       </div>
     </footer>
-    <!-- Native dialogs keep all demonstration flows within this one homepage. -->
+    <!-- Shared product, cart, and information dialogs. -->
     <dialog class="product-dialog" id="product-dialog" aria-labelledby="detail-title">
       <button class="close-button" type="button" data-close aria-label="Close product details">
         <svg class="icon" aria-hidden="true">
@@ -394,7 +339,7 @@
       <div class="cart-summary" id="cart-summary">
         <p><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></p>
         <p class="cart-note">Shipping and taxes are not included.</p>
-        <p class="demo-note">This is a portfolio demo. Checkout and payments are not enabled.</p>
+        <p class="demo-note">This is a storefront demo. Checkout and payments are not enabled.</p>
         <button class="button button-primary" type="button" data-close>
           Continue browsing
           <svg class="icon" aria-hidden="true">
@@ -414,6 +359,14 @@
       <div id="info-content"></div>
       <button class="button button-secondary" type="button" data-close>Back to browsing</button>
     </dialog>
-    <script src="script.js" defer></script>
+    <script src="assets/js/core.js" defer></script>
+    <script src="assets/js/catalog.js" defer></script>
+    <script src="assets/js/products.js" defer></script>
+    <script src="assets/js/favorites.js" defer></script>
+    <script src="assets/js/collection.js" defer></script>
+    <script src="assets/js/dialogs.js" defer></script>
+    <script src="assets/js/cart.js" defer></script>
+    <script src="assets/js/mobile.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
   </body>
 </html>

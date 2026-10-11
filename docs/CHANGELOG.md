@@ -33,3 +33,11 @@ Release version unchanged at v4.1.0 pending the next development step.
 - Added “Back to selected work” navigation to each project.
 - Removed GUP’s presentation walkthrough and HOLIX Ai’s yellow focus effect.
 - Simplified existing code and asset naming.
+
+## GUP integration and cleanup — 10 October 2026
+
+- Replaced the single-page storefront with the supplied GUP Home and Browse project; preserved portfolio case-study links and added return navigation to both pages.
+- Removed obsolete portfolio source copies and unreferenced incoming GUP files. Kept GUP’s used artwork local to its self-contained project and retained shared icon licences.
+- Replaced internal HTML-file return URLs with directory links. Added shared HTTP(S) index URL normalization without changing query strings or fragments.
+- Extended the reusable source checker, documented exact old-file deletions for merging, and refreshed integration/validation notes.
+- Passed source checks, GUP DOM interaction simulations, and 110 HTTP checks across root and repository-prefix hosting. Rendered-browser testing remained unavailable; future Browse product routes retain their supplied unbuilt status.

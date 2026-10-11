@@ -29,7 +29,15 @@ The site pairs concise case studies with working project pages so visitors can r
 - Refined interactions and repaired UI issues: Simplified HOLIX panel states and focus containment, batched frequent layout updates, and cached GUP elements and search records. Fixed desktop composer focus visibility, inconsistent sidebar portrait sizing, chat-list overflow handling, and stale clipboard success feedback.
 - Prepared the project for further development: Added editor formatting conventions, extended source checks, and documented integration and validation. Preserved page URLs, content, and all 21 referenced image assets without adding a build dependency.
 
-Source, syntax, preservation, and isolated interaction checks passed. Visual browser, real-device, and assistive-technology verification remain pending; WCAG conformance has not been established. See [validation notes](docs/VALIDATION.md).
+## GUP integration and cleanup — 10 October 2026
+
+- Replaced the older single-page GUP with the supplied two-page project at `page/gup/` and `page/gup/browse/`, including its current artwork, catalogue, filters, favorites, and cart.
+- Kept “Back to selected work” on both GUP pages, returning to the existing GUP case study.
+- Removed superseded portfolio CSS/JS copies and unreferenced GUP sources. The storefront is self-contained under `page/gup/assets/`; shared icon licences remain in `assets/licenses/`.
+- Changed internal return links to directory URLs and added one shared URL-normalization script. An explicit HTTP(S) `index.html` visit becomes the same directory URL, preserving query strings and fragments.
+- Extended the source checker to cover both storefront pages, GUP script order and catalogue data, image dimensions, JavaScript syntax, clean internal URLs, and unused CSS/JS/media.
+
+Source checks, GUP DOM interaction simulations, and 110 local HTTP requests across site-root and repository-prefix layouts passed. Browser rendering, real-device, and assistive-technology verification remain pending. Browse product-page destinations remain intentionally unbuilt as in the supplied GUP project. See [validation notes](docs/VALIDATION.md) and [GUP editing guidance](docs/GUP.md).
 
 ## Built with
 
@@ -40,12 +48,36 @@ HTML, CSS, and vanilla JavaScript. The site requires no package installation or 
 | Path | Contents |
 | --- | --- |
 | `index.html` | Portfolio homepage, case studies, capabilities, About, and contact |
-| `page/` | Individual project pages with their own styles and scripts, and the compatibility redirect for the earlier About page |
+| `page/` | Project HTML, HOLIX/developer styles and scripts, GUP’s self-contained assets and Browse route, and the earlier About redirect |
 | `assets/css/` | Homepage styles and shared accessibility, motion, and return-navigation styles |
-| `assets/js/` | Homepage email-copy interaction |
+| `assets/js/` | Homepage email-copy interaction and shared directory-URL normalization |
 | `assets/images/` | Project previews, artwork, portraits, branding, and favicons |
 | `assets/licenses/` | Third-party icon licenses |
 | `docs/` | Change history, accessibility notes, validation results, and integration guidance |
 | `tools/` | Dependency-free source and local-reference checks |
 | `.editorconfig` | Shared text formatting conventions for future edits |
 | `.nojekyll` | GitHub Pages configuration for publishing the static folder directly |
+
+## Local checks
+
+From the repository root:
+
+```sh
+python -m http.server 8000
+```
+
+Open `http://localhost:8000/`. With Python 3.10+ and Node.js available, run:
+
+```sh
+python tools/check_project.py
+```
+
+The published site needs no Node.js, Python, package installation, or build step.
+
+## GitHub Pages
+
+Put the **contents** of this folder in the repository’s selected publishing folder; keep `index.html` and `.nojekyll` at that level. For a branch deployment, select the branch and root folder under **Settings → Pages**. Use a review branch before merging into `main`.
+
+Internal routes use directory URLs, so navigation shows `page/gup/` and `page/gup/browse/` rather than HTML filenames. Relative paths support both a custom domain and GitHub Pages’ repository prefix. Explicit `index.html` visits are normalized when JavaScript is available; filenames remain normal source files in GitHub. No GitHub commit, merge, or deployment has been performed.
+
+Follow [integration guidance](docs/INTEGRATION.md) so deleted files do not remain as stale copies when applying the ZIP. GitHub’s [current static-site guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) covers entry points, publishing sources, and `.nojekyll`.
