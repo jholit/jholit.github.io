@@ -7,8 +7,11 @@
 
   const label = copyButton.querySelector("[data-copy-label]");
   let resetTimer;
+  let copying = false;
 
   copyButton.addEventListener("click", async () => {
+    if (copying) return;
+    copying = true;
     const email = copyButton.dataset.copyEmail;
 
     try {
@@ -29,6 +32,8 @@
       copyButton.classList.remove("is-copied");
       if (label) label.textContent = "Copy email";
       status.textContent = `Copy unavailable. Email: ${email}`;
+    } finally {
+      copying = false;
     }
   });
 })();

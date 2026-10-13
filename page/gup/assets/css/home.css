@@ -78,13 +78,13 @@
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1367px) {
   .hero {
     min-height: 512px;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1366px) {
   .hero-copy {
     padding-left: 32px;
   }

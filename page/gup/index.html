@@ -46,9 +46,6 @@
       <symbol id="i-heart" viewBox="0 0 24 24">
         <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>
       </symbol>
-      <symbol id="i-menu" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16"/>
-      </symbol>
       <symbol id="i-person" viewBox="0 0 24 24">
         <circle cx="12" cy="7.5" r="3.5"/>
         <path d="M4 21v-2a8 8 0 0 1 16 0v2"/>
@@ -82,9 +79,6 @@
           <a class="wordmark" href="./" aria-label="Gamers Ultra Plus home"> <span>GAMERS</span> <span>ULTRA<span class="brand-plus">+</span></span> </a>
           <nav class="primary-nav" aria-label="Primary navigation">
             <a href="browse/">Browse</a>
-            <a href="browse/?collection=new">New Arrivals</a>
-            <a href="browse/?collection=popular">Popular Games</a>
-            <a href="browse/?collection=featured">Recommendations</a>
           </nav>
         </div>
         <div class="header-actions">
@@ -112,7 +106,7 @@
             <span class="cart-count" id="cart-count">0</span>
           </button>
           <button
-            class="header-action mobile-menu-toggle"
+            class="mobile-menu-access sr-only"
             id="open-mobile-menu"
             type="button"
             aria-label="Open menu"
@@ -120,7 +114,7 @@
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
-            <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+            Open navigation menu
           </button>
         </div>
       </div>
@@ -155,10 +149,8 @@
         </button>
       </div>
       <nav class="mobile-menu-nav" aria-label="Mobile navigation">
+        <a class="mobile-menu-link" href="./" aria-current="page">Home</a>
         <a class="mobile-menu-link" href="browse/">Browse</a>
-        <button class="mobile-menu-link" type="button" disabled aria-label="New Arrivals, coming soon">New Arrivals</button>
-        <button class="mobile-menu-link" type="button" disabled aria-label="Popular Games, coming soon">Popular Games</button>
-        <button class="mobile-menu-link" type="button" disabled aria-label="Recommendations, coming soon">Recommendations</button>
         <button class="mobile-menu-link" type="button" data-menu-account>Account</button>
       </nav>
     </dialog>
@@ -247,9 +239,6 @@
           <div class="footer-column">
             <h3>Explore</h3>
             <a href="browse/">All Games</a>
-            <a href="browse/?collection=new">New arrivals</a>
-            <a href="browse/?collection=popular">Popular Games</a>
-            <a href="browse/?collection=featured">Our picks</a>
           </div>
           <div class="footer-column">
             <h3>Here to help</h3>

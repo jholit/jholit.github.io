@@ -156,9 +156,9 @@
   }
 }
 
-@media (min-width: 1080px) and (max-width: 1250px) {
+@media (min-width: 1080px) and (max-width: 1366px) {
   .header-main {
-    gap: 24px;
+    gap: 32px;
   }
 
   .primary-nav {
@@ -176,18 +176,7 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .header-main {
-    gap: 32px;
-  }
-
-  .primary-nav {
-    margin-left: 16px;
-    padding-left: 16px;
-  }
-}
-
-.mobile-menu-toggle {
+.mobile-menu-access {
   display: none;
 }
 
@@ -271,7 +260,7 @@
 }
 
 .mobile-menu-link:not(:disabled):active,
-.mobile-menu-link.is-activated {
+.mobile-menu-link.is-touch-pressed {
   background: var(--orange);
   color: var(--ink);
 }
@@ -345,7 +334,29 @@
     padding: 0;
   }
 
-  .mobile-menu-toggle {
-    display: flex;
+  .mobile-menu-access {
+    display: block;
+  }
+
+  .mobile-menu-access:focus-visible {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    white-space: normal !important;
+  }
+
+  .site-header,
+  main,
+  .mobile-menu .close-button {
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .mobile-menu .close-button.is-touch-pressed {
+    background: var(--orange);
+    color: var(--ink);
   }
 }

@@ -23,9 +23,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Jost:wght@500;600;700&amp;family=Palanquin+Dark:wght@600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;family=Jost:wght@500;600;700&amp;family=Palanquin:wght@500;600&amp;family=Palanquin+Dark:wght@400;600&amp;display=swap"
     >
     <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/shared/accessibility.css">
     <script src="assets/js/site.js" defer></script>
   </head>
@@ -44,30 +45,32 @@
     <main id="main-content" tabindex="-1">
       <section class="hero page-shell" id="top" aria-labelledby="hero-title">
         <div class="hero__copy">
-          <h1 id="hero-title">Web Designer Focused on Content and Structure</h1>
-          <p class="hero__lead">I organize information, establish hierarchy, clarify navigation, and edit interface copy so people can find what matters and know what to do next.</p>
-          <div class="hero__actions">
-            <a class="button button--primary" href="#work">View selected work</a>
+          <div class="hero__heading">
+            <div class="hero__identity">
+              <h1 id="hero-title">Web <span>Designer</span></h1>
+              <span class="hero__name">Jaqweal Holit</span>
+            </div>
+            <div class="hero__visual" aria-label="Website design previews">
+              <div class="hero__work-preview hero__work-preview--portfolio">
+                <img src="assets/images/previews/software-developer-portfolio.webp" alt="Software Developer Portfolio redesign with featured game imagery and organised project information." width="1905" height="1048" fetchpriority="high">
+              </div>
+              <div class="hero__work-preview hero__work-preview--gup">
+                <img src="assets/images/previews/gup.webp" alt="Gamers Ultra Plus storefront design with a featured game and product catalogue." width="1904" height="1030">
+              </div>
+            </div>
+          </div>
+          <div class="hero__details">
+            <span class="hero__subtitle">Bringing clarity, structure, and purpose to websites.</span>
+            <div class="hero__intro" aria-labelledby="hero-intro-title">
+              <span class="hero__intro-label" id="hero-intro-title">How?</span>
+              <p class="hero__lead">By organizing a website or webpages layout, content, and navigation around it - ensuring that the design matters for a successful site visitation and experience.</p>
+            </div>
           </div>
         </div>
-        <figure class="featured-preview">
-          <div class="interface-preview">
-            <span class="interface-preview__viewport"><img src="assets/images/previews/software-developer-portfolio.webp" alt="Jon Buresh’s redesigned software developer portfolio showing the Starship Factory featured project, navigation, description, project facts, and links." width="1905" height="1048"></span>
-            <a
-              class="interface-preview__link"
-              href="page/software-developer-portfolio/"
-              aria-label="Open the Software Developer Portfolio redesign"
-            ></a>
-          </div>
-          <figcaption>
-            <span>Featured:</span>
-            <strong>Software Developer Portfolio</strong>
-          </figcaption>
-        </figure>
       </section>
       <section class="work-section page-shell" id="work" aria-labelledby="work-title">
         <header class="section-heading">
-          <h2 id="work-title">Selected Web Design Work</h2>
+          <h2 id="work-title">Selected Work</h2>
         </header>
         <article class="project" id="software-developer-project" aria-labelledby="software-developer-title">
           <div class="project__visual">
@@ -211,68 +214,6 @@
           </div>
         </article>
       </section>
-      <section class="capabilities page-shell" aria-labelledby="capabilities-title">
-        <header class="section-heading">
-          <h2 id="capabilities-title">Web Design Capabilities</h2>
-        </header>
-        <div class="capability-list">
-          <article>
-            <div class="capability-list__meta">
-              <span>01</span>
-              <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="4" y="4" width="6" height="6" rx="1"></rect>
-                <rect x="14" y="4" width="6" height="6" rx="1"></rect>
-                <rect x="4" y="14" width="6" height="6" rx="1"></rect>
-                <rect x="14" y="14" width="6" height="6" rx="1"></rect>
-              </svg>
-            </div>
-            <h3>Content Organization</h3>
-            <p>Grouping primary tasks, supporting information, and deeper details into a clear reading order.</p>
-          </article>
-          <article>
-            <div class="capability-list__meta">
-              <span>02</span>
-              <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="9" y="3" width="6" height="5" rx="1"></rect>
-                <rect x="3" y="16" width="6" height="5" rx="1"></rect>
-                <rect x="15" y="16" width="6" height="5" rx="1"></rect>
-                <path d="M12 8v4M6 16v-4h12v4"></path>
-              </svg>
-            </div>
-            <h3>Information Architecture</h3>
-            <p>Giving persistent destinations stable homes while keeping contextual actions close to the work they affect.</p>
-          </article>
-          <article>
-            <div class="capability-list__meta">
-              <span>03</span>
-              <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 7h-2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"></path>
-                <path d="M8 16l1-.25 9.5-9.5a1.77 1.77 0 0 0-2.5-2.5l-9.5 9.5L6 16h2z"></path>
-                <path d="M14.5 5.5l2.5 2.5"></path>
-              </svg>
-            </div>
-            <h3>Hierarchy and Editing</h3>
-            <p>Reducing competing messages, tightening labels, and exposing the information needed for scanning and comparison.</p>
-          </article>
-          <article>
-            <div class="capability-list__meta">
-              <span>04</span>
-              <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4l7.5 17 2.6-7 6.9-2.5L4 4z"></path>
-                <path d="M13.5 13.5l5 5"></path>
-              </svg>
-            </div>
-            <h3>Interaction Judgment</h3>
-            <p>Using familiar patterns, feedback, focus states, and on-demand details to keep interactions understandable.</p>
-          </article>
-        </div>
-        <div class="tools-evidence" aria-label="Supported tools and methods">
-          <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9H9a3 3 0 0 1 0-6h3v6z"></path><path d="M12 3h3a3 3 0 0 1 0 6h-3V3z"></path><path d="M12 9H9a3 3 0 0 0 0 6h3V9z"></path><circle cx="15" cy="12" r="3"></circle><path d="M12 15H9a3 3 0 1 0 3 3v-3z"></path></svg><span><strong>Figma</strong> for interface exploration and design decisions.</span></p>
-          <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8l-4 4 4 4"></path><path d="M17 8l4 4-4 4"></path><path d="M14 4l-4 16"></path></svg><span><strong>HTML/CSS</strong> for structure, responsive styling, and implementation review.</span></p>
-          <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"></path></svg><span><strong>AI-Assisted Implementation</strong> for faster coding and iteration, followed by manual direction and refinement.</span></p>
-          <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M7 20h10M9 18v2M15 18v2"></path><path d="M8 9l2 2-2 2M13 13h3"></path></svg><span><strong>Interactive Prototypes</strong> for testing navigation, states, and interaction behavior.</span></p>
-        </div>
-      </section>
       <section class="about page-shell" id="about" aria-labelledby="about-title">
         <div class="about__portrait-wrap">
           <img
@@ -284,15 +225,76 @@
           >
         </div>
         <div class="about__content">
-          <h2 id="about-title">About Jaqweal Holit</h2>
+          <h2 id="about-title">About Me</h2>
           <p>I originally moved toward full-stack development before finding my way through UI/UX and into web design. That path left me comfortable collaborating on front-end structure while keeping my focus on the content, hierarchy, navigation, and responsive behavior people actually experience.</p>
           <p>I am strongest when a website feels fragmented, inconsistent, or harder to use than it needs to be. I work out what belongs, what is competing, what should be easier to find, and how the page can communicate with less friction.</p>
+        </div>
+      </section>
+      <section class="capabilities page-shell" aria-label="Design capabilities">
+        <div class="capabilities__table">
+          <div class="capability-list">
+            <article>
+              <div class="capability-list__meta">
+                <span>01</span>
+                <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                  <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                  <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                  <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                </svg>
+              </div>
+              <h3>Content Organization</h3>
+              <p>Grouping primary tasks, supporting information, and deeper details into a clear reading order.</p>
+            </article>
+            <article>
+              <div class="capability-list__meta">
+                <span>02</span>
+                <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="3" width="6" height="5" rx="1"></rect>
+                  <rect x="3" y="16" width="6" height="5" rx="1"></rect>
+                  <rect x="15" y="16" width="6" height="5" rx="1"></rect>
+                  <path d="M12 8v4M6 16v-4h12v4"></path>
+                </svg>
+              </div>
+              <h3>Information Architecture</h3>
+              <p>Giving persistent destinations stable homes while keeping contextual actions close to the work they affect.</p>
+            </article>
+            <article>
+              <div class="capability-list__meta">
+                <span>03</span>
+                <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 7h-2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"></path>
+                  <path d="M8 16l1-.25 9.5-9.5a1.77 1.77 0 0 0-2.5-2.5l-9.5 9.5L6 16h2z"></path>
+                  <path d="M14.5 5.5l2.5 2.5"></path>
+                </svg>
+              </div>
+              <h3>Hierarchy and Editing</h3>
+              <p>Reducing competing messages, tightening labels, and exposing the information needed for scanning and comparison.</p>
+            </article>
+            <article>
+              <div class="capability-list__meta">
+                <span>04</span>
+                <svg class="capability-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 4l7.5 17 2.6-7 6.9-2.5L4 4z"></path>
+                  <path d="M13.5 13.5l5 5"></path>
+                </svg>
+              </div>
+              <h3>Interaction Judgment</h3>
+              <p>Using familiar patterns, feedback, focus states, and on-demand details to keep interactions understandable.</p>
+            </article>
+          </div>
+          <div class="tools-evidence" aria-label="Supported tools and methods">
+            <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9H9a3 3 0 0 1 0-6h3v6z"></path><path d="M12 3h3a3 3 0 0 1 0 6h-3V3z"></path><path d="M12 9H9a3 3 0 0 0 0 6h3V9z"></path><circle cx="15" cy="12" r="3"></circle><path d="M12 15H9a3 3 0 1 0 3 3v-3z"></path></svg><span><strong>Figma</strong> for interface exploration and design decisions.</span></p>
+            <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8l-4 4 4 4"></path><path d="M17 8l4 4-4 4"></path><path d="M14 4l-4 16"></path></svg><span><strong>HTML/CSS</strong> for structure, responsive styling, and implementation review.</span></p>
+            <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"></path></svg><span><strong>AI-Assisted Implementation</strong> for faster coding and iteration, followed by manual direction and refinement.</span></p>
+            <p><svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M7 20h10M9 18v2M15 18v2"></path><path d="M8 9l2 2-2 2M13 13h3"></path></svg><span><strong>Interactive Prototypes</strong> for testing navigation, states, and interaction behavior.</span></p>
+          </div>
         </div>
       </section>
       <section class="contact page-shell" id="contact" aria-labelledby="contact-title">
         <div class="contact__layout">
           <div class="contact__intro">
-            <h2 id="contact-title">Contact Jaqweal Holit</h2>
+            <h2 id="contact-title">Contact Me</h2>
             <p>I am seeking an entry-level Web Designer role where I can contribute clear organization and thoughtful interface decisions within a collaborative team.</p>
           </div>
           <div class="contact__action-group">

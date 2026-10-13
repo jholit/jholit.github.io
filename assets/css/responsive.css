@@ -1,0 +1,255 @@
+/* Portfolio width breakpoints: 1366px, 1079px, 767px, and 479px. */
+
+@media (min-width: 1080px) {
+  .capabilities__table {
+    overflow: hidden;
+    border: 1px solid rgb(199 230 247 / 28%);
+    border-radius: 1rem;
+  }
+
+  .capabilities__table > .capability-list {
+    border-top: 0;
+    border-radius: 0;
+  }
+
+  .capabilities__table > .tools-evidence {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+/* Keep About's portrait and text together in larger tablet layouts. */
+@media (max-width: 1366px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 2rem;
+  }
+
+  .about__portrait-wrap {
+    justify-self: center;
+    margin-inline: auto;
+  }
+
+  .about__content {
+    width: min(100%, 52rem);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .about h2,
+  .about__content > p {
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 1079px) {
+  .hero__identity,
+  .hero__intro {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__lead {
+    text-align: center;
+  }
+
+  .hero__intro {
+    margin-inline: auto;
+  }
+
+  .project__title-row {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .status {
+    justify-self: center;
+  }
+
+  .project-link {
+    display: flex;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .project,
+  .project--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .project--reverse .project__visual,
+  .project--reverse .project__content {
+    grid-column: 1;
+  }
+
+  .project--reverse .project__visual {
+    grid-row: 1;
+  }
+
+  .project--reverse .project__content {
+    grid-row: 2;
+  }
+
+  .project__visual {
+    position: static;
+  }
+
+  .capability-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .capability-list,
+  .tools-evidence {
+    border: 1px solid rgb(199 230 247 / 28%);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .tools-evidence {
+    margin-top: 1.25rem;
+  }
+
+  .capability-list article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .capability-list article:nth-child(-n+2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .site-header__inner {
+    grid-template-columns: auto 1fr;
+    gap: .8rem;
+    padding-block: .8rem;
+  }
+
+  .site-nav {
+    justify-content: flex-end;
+  }
+
+  .contact__actions {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  html {
+    scroll-padding-top: 8rem;
+  }
+
+  .hero__heading,
+  .hero__details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero__visual {
+    min-height: 18rem;
+    width: min(100%, 30rem);
+    justify-self: center;
+  }
+
+  .hero__work-preview--portfolio {
+    transform: translateY(-30px) rotate(-4deg);
+  }
+
+  .hero__work-preview--gup {
+    transform: translateY(45px) rotate(6deg);
+  }
+
+  .project__facts div {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+  }
+
+  .capability-list,
+  .tools-evidence {
+    grid-template-columns: 1fr;
+  }
+
+  .capability-list article,
+  .capability-list article:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .capability-list article:last-child {
+    border-bottom: 0;
+  }
+
+  .site-footer .page-shell {
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .site-footer p:last-child {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .about {
+    margin-bottom: 80px;
+  }
+
+  .contact {
+    padding-top: 80px;
+  }
+
+  .contact__intro {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .contact__layout p {
+    margin-inline: auto;
+  }
+
+  .contact__layout {
+    padding: 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .site-nav {
+    gap: .85rem;
+  }
+
+  .contact-action {
+    padding-inline: .75rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .interface-preview,
+  .contact-action {
+    border: 2px solid CanvasText;
+  }
+}
+
+/* Flexible grid children must be able to shrink when text is enlarged. */
+
+.hero > *,
+.project > *,
+.project__facts dd,
+.contact__layout > * {
+  min-width: 0;
+}
+
+.project-link {
+  max-width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 1079px), (pointer: coarse) {
+  .site-logo,
+  .site-nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+

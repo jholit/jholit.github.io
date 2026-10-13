@@ -181,7 +181,7 @@ input::placeholder {
   opacity: 1;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1366px) {
   .page-width {
     width: calc(100% - 64px);
   }

@@ -42,7 +42,7 @@ Paths below are relative to `page/gup/`, unless specified otherwise.
 | `assets/js/favorites.js` / `cart.js` | Their own saved state, validation, controls, and rendering |
 | `assets/js/collection.js` | Tabs, search, facets, sorting, result transitions, and URL state |
 | `assets/js/dialogs.js` | Native dialog opening, animated dismissal, and focus restoration |
-| `assets/js/mobile.js` | Drawer interaction, swipe dismissal, and responsive hero action placement |
+| `assets/js/mobile.js` | TouchEvent menu taps/swipes, reset handling, and responsive hero action placement |
 | `assets/js/site.js` | Information panels, newsletter feedback, year, and controller initialization |
 | `assets/images/` / portfolio `assets/licenses/` | Four used WebP images and the shared Tabler icon licence |
 | `tools/check_project.py` (portfolio root) | Repeatable source, route, and asset integrity checks |
@@ -71,7 +71,7 @@ Browse images and titles link to dedicated product routes. Those pages remain in
 
 ## Preserved behaviour
 
-Browse has **All games** and **Favorites (N)** tabs. Sort by remains beside them with an automatic left margin and wraps below them on small phones. Search, facets, favorites, and sorting combine; Clear all resets the collection. Settings persist in the URL, and header/footer collection links still select New Arrivals, Popular Games, or Recommendations. The stock checkbox stays above the dropdowns, results use `N Games Found`, and cards show only unavailable stock labels beside their prices.
+Browse has **All games** and **Favorites (N)** tabs. Sort by remains beside them with an automatic left margin and wraps below them on small phones. Search, facets, favorites, and sorting combine; Clear all resets the collection. Settings persist in the URL. New Arrivals, Popular Games, and Recommendations destination links have been removed from header/footer navigation on both pages; collection query handling remains available. The stock checkbox stays above the dropdowns, results use `N Games Found`, and cards show only unavailable stock labels beside their prices.
 
 The four existing games have no book classification. Specific Book type selections therefore show no results until corresponding records are added. Playtime filtering uses the upper end of each game's duration range.
 
@@ -84,9 +84,11 @@ Hearts remain separate buttons within the image area, with default `#bf5260`, ho
 | 768–1079px | Two columns; hero image and action in the right column |
 | 1080px and above | Desktop navigation and layout |
 
-320px remains the minimum supported design width. Below 1080px the header is sticky, numeric utility badges are hidden visually, and Browse facets sit above products. The full-width mobile drawer slides from/to the left and supports its close button, Escape, backdrop dismissal, and a predominantly horizontal left swipe over 64px. Vertical scrolling, pinch zoom, focus restoration, and reduced-motion support remain available.
+320px remains the minimum supported design width. Below 1080px the header is sticky, numeric utility badges are hidden visually, and Browse facets sit above products. The visible hamburger control/icon is removed on both pages. Swipe right on the main content or header to open the full-width drawer, and swipe left inside it to close. Gestures must travel more than 64px with horizontal displacement greater than twice the vertical displacement. A visually hidden keyboard/screen-reader opener remains, becoming visible on keyboard focus; the ordinary wordmark remains a home link. Close-button taps and Escape also dismiss the drawer. Vertical scrolling, pinch zoom, focus restoration, and reduced-motion support remain available.
 
-Browse is the mobile drawer's live page link. New Arrivals, Popular Games, and Recommendations remain disabled placeholders; Account opens its existing demonstration panel. The homepage hero action moves below the image on mobile/tablet and returns to the copy on desktop. Product images retain `object-fit: cover`; the mobile details image uses `height: clamp(240px, 36dvh, 360px)` with a smaller cap on short landscape screens, inside the existing reduced-size scrollable modal.
+Menu taps and swipes use touchstart, touchmove, touchend, touchcancel, touches, changedTouches and Touch.identifier. Touchstart gives enabled menu controls temporary orange feedback; touchend activates the control after no more than 12px of movement. Movement, cancellation, multiple fingers, context menus, history resets, and layout changes clear pending feedback/actions. Swiping from a menu link/button dismisses without activating it. Browse taps navigate once; Account taps close the drawer before opening the existing information dialog. Handled touches prevent their compatibility click, while native keyboard/mouse link behaviour and modifier/new-tab navigation remain available. Other open dialogs and editable controls block menu opening. No native scrolling movement is prevented.
+
+The mobile drawer contains Home, Browse, and Account in that order on both pages. Home links directly to the GUP homepage with ./ from Home and ../ from Browse; the current page link carries aria-current=page. New Arrivals, Popular Games, and Recommendations placeholders have been removed. Account opens its existing demonstration panel. The homepage hero action moves below the image on mobile/tablet and returns to the copy on desktop. Product images retain `object-fit: cover`; the mobile details image uses `height: clamp(240px, 36dvh, 360px)` with a smaller cap on short landscape screens, inside the existing reduced-size scrollable modal.
 
 ## Checks and scope
 
@@ -99,6 +101,8 @@ python tools/check_project.py
 The checker validates HTML nesting, IDs, labels/ARIA, directory routes and fragments, relative asset paths, script dependency order, catalogue values, image dimensions, asset use, CSS block balance, and JavaScript syntax. Future product routes are format-checked but not required to exist.
 
 The integrated portfolio passed source checks, GUP DOM simulations, and HTTP checks at both a site root and a repository prefix. See [the current validation record](VALIDATION.md) for exactly what was tested and its limitations.
+
+The 13 October cleanup also preserves History API state, cancels stale search timers when restoring Browse URLs, caches the dialog inventory used by touch handling, and shares product-details activation between the hero and catalogue through the main landmark.
 
 Browser/device visual and gesture verification remains pending; these source and simulation checks do not replace it. Before publishing, review both pages on phone, tablet, and desktop with touch and keyboard input.
 

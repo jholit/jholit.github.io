@@ -184,10 +184,11 @@ GUP.initCollection = function ({ isBrowse, products, favorites }) {
     const url = new URL(location.href);
     url.search = params.toString();
     // file:// browsing can limit History API support; filtering still works.
-    try { history.replaceState(null, '', url); } catch { /* Optional URL persistence. */ }
+    try { history.replaceState(history.state, '', url); } catch { /* Optional URL persistence. */ }
   }
 
   function readBrowseURL() {
+    clearTimeout(searchTimer);
     const params = new URLSearchParams(location.search);
     const requestedFilter = params.get('favorites') === '1' ? 'favorites' : params.get('collection');
     // Header links can still request collections without adding extra Browse tabs.

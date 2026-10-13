@@ -1,0 +1,107 @@
+/* Accessibility refinements use the existing cyan and neutral palette. */
+
+.mobile-toolbar,
+.mobile-profile-name,
+.mobile-menu-footer,
+.mobile-menu-close,
+.mobile-tools-heading,
+.mobile-tool-category-heading,
+.mobile-sidebar-label,
+.compact-panel-close {
+  display: none;
+}
+
+.mobile-menu-content {
+  display: contents;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: var(--accent-cyan);
+  color: #071318;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-180%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-cyan) !important;
+  outline-offset: 2px;
+}
+
+.chat-thread:focus-visible {
+  outline-offset: -4px;
+}
+
+.chat-input:focus-visible {
+  outline-offset: -3px;
+}
+
+.model-mode-toggle:focus-within {
+  outline: 3px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+/* Pointer focus can match :focus-visible on text fields; hide only its focus ring.
+   Keyboard focus, including forced-colour indicators, keeps the existing styling. */
+html[data-focus-input="pointer"] :focus,
+html[data-focus-input="pointer"] .model-mode-toggle:focus-within {
+  outline: none !important;
+}
+
+.chat-input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.chat-input,
+.search-field,
+.hub-search {
+  border-color: #6d7785;
+}
+
+.chat-input:focus,
+.search-field:focus-within,
+.hub-search:focus-within {
+  border-color: var(--accent-cyan);
+}
+
+.noscript-note {
+  padding: 12px 16px;
+  color: var(--text-primary);
+  background: var(--surface-elevated);
+}
+
+.sidebar-panel.is-tooltip-dismissed .sidebar-popup,
+.sidebar-panel.is-tooltip-dismissed .collapsed-search-btn::after,
+.sidebar-panel.is-tooltip-dismissed .chat-panel-trigger::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar-popup-anchor.is-open .sidebar-popup {
+  pointer-events: auto;
+}
+
+.sidebar-popup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -12px;
+  width: 12px;
+}
+
+.composer-send-btn:disabled {
+  color: var(--text-tertiary);
+  background: var(--surface-raised);
+  cursor: default;
+}

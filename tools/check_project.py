@@ -5,17 +5,19 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import re
-import sys
 import json
 import math
 import shutil
 import struct
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 errors = []
 GUP_ROOT = ROOT / 'page/gup'
+HOLIX_ROOT = ROOT / 'page/holix-ai'
+HOLIX_SCRIPT_ORDER = ['core', 'hub', 'mobile', 'workspace']
 GUP_SCRIPT_ORDER = ['core', 'catalog', 'products', 'favorites', 'collection', 'dialogs', 'cart', 'mobile', 'site']
 # These shared-script targets only exist on their owning storefront page.
 GUP_OPTIONAL_IDS = {'home': {'browse-facets', 'clear-filters', 'sort-select'}, 'browse': {'product-dialog'}}
@@ -74,6 +76,8 @@ for path, page in pages.items():
             errors.append(f'{path.relative_to(ROOT)}: inline styling or behaviour belongs in an external file')
         if tag == 'img' and 'alt' not in attrs:
             errors.append(f'{path.relative_to(ROOT)}: image missing alt')
+        if tag == 'script' and 'src' not in attrs:
+            errors.append(f'{path.relative_to(ROOT)}: inline behaviour belongs in an external file')
         if tag == 'script' and 'src' in attrs and 'defer' not in attrs:
             errors.append(f'{path.relative_to(ROOT)}: blocking script {attrs["src"]}')
         if tag == 'a' and attrs.get('target') == '_blank' and 'noopener' not in attrs.get('rel', ''):
@@ -137,6 +141,11 @@ for path, page in pages.items():
             optional_ids = GUP_OPTIONAL_IDS.get(page_type, set())
         for ident in sorted(set(selectors) - set(ids) - optional_ids):
             errors.append(f'{script.relative_to(ROOT)}: missing HTML selector target #{ident}')
+    if path.is_relative_to(HOLIX_ROOT):
+        scripts = [Path(a['src']).stem for t, a in page.nodes if t == 'script' and 'src' in a and
+                   (path.parent / a['src']).resolve().is_relative_to(HOLIX_ROOT)]
+        if scripts != HOLIX_SCRIPT_ORDER:
+            errors.append(f'{path.relative_to(ROOT)}: unexpected HOLIX dependency order')
     if path.is_relative_to(GUP_ROOT):
         scripts = [Path(a['src']).stem for t, a in page.nodes if t == 'script' and 'src' in a and
                    (path.parent / a['src']).resolve().is_relative_to(GUP_ROOT)]
@@ -146,6 +155,7 @@ for path, page in pages.items():
         if (path.parent / site_root).resolve() != GUP_ROOT:
             errors.append(f'{path.relative_to(ROOT)}: incorrect data-site-root')
 
+# CSS belongs to stylesheets; reject embedded scripts/styles and obsolete asset copies above.
 for css in ROOT.rglob('*.css'):
     text = css.read_text()
     # Ignore comments and strings before checking balanced blocks.
@@ -162,7 +172,13 @@ for css in ROOT.rglob('*.css'):
         value = match[1].strip(' \"\'')
         if urlsplit(value).scheme or urlsplit(value).netloc or value.startswith('#'):
             continue
+        if urlsplit(value).path.startswith('/'):
+            errors.append(f'{css.relative_to(ROOT)}: root-absolute URL breaks repository hosting: {value}')
+            continue
         target = (css.parent / unquote(urlsplit(value).path)).resolve()
+        if not target.is_relative_to(ROOT):
+            errors.append(f'{css.relative_to(ROOT)}: URL outside project: {value}')
+            continue
         referenced.add(target)
         if not target.is_file():
             errors.append(f'{css.relative_to(ROOT)}: missing URL {value}')
@@ -234,4 +250,4 @@ if 'small-screen-notice' in (ROOT / 'page/holix-ai/index.html').read_text():
 if errors:
     print('\n'.join(errors))
     sys.exit(1)
-print(f'PASS: {len(pages)} HTML pages; directory URLs; local files/fragments; IDs/ARIA/script targets; button types; field labels; landmarks; image alternatives; GUP dependencies/catalogue; CSS blocks; JS syntax; no unused assets.')
+print(f'PASS: {len(pages)} HTML pages; directory URLs; local files/fragments; IDs/ARIA/script targets; button types; field labels; landmarks; image alternatives; HOLIX/GUP dependencies; GUP catalogue; CSS blocks; JS syntax; no unused assets.')

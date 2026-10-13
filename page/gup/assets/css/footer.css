@@ -182,7 +182,7 @@
   color: #f4774b;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1366px) {
   .footer-main {
     gap: 32px;
     grid-template-columns: 1.8fr 1fr 1.2fr 1.2fr;

@@ -14,6 +14,44 @@ The site pairs concise case studies with working project pages so visitors can r
 | 02 — Gamers Ultra Plus | Independent storefront redesign | A responsive retail prototype built around game discovery and comparison, with search, filters, product details, and a demonstration cart. |
 | 03 — HOLIX Ai | Independent AI workspace concept | An interactive interface exploring how navigation, files, projects, tools, and controls can support a familiar chat experience without overwhelming it. |
 
+## Developer portfolio mobile navigation — 13 October 2026
+
+Below 1080px, the Software Developer Portfolio header stays at the top while scrolling. A Menu dropdown replaces the former Contact position and contains Selected Work, About the Developer, Contact Me, and GitHub with identical link styling. Desktop navigation and its Contact button retain their original appearance. Section links account for the sticky header; the dropdown supports native touch/keyboard activation, Escape, and outside dismissal.
+
+GitHub sits immediately below Contact Me in the mobile dropdown. Returning to this project after following one of its GitHub links closes the menu and resets the page to the top, including tab/window return and browser Back. A temporary marker in session storage supports page reloads when storage is available.
+
+Source checks, 189 targeted navigation assertions, 128 GitHub-return assertions, and 182 root/prefix HTTP requests passed. Native dropdown rendering and physical-device checks remain pending; see [validation](docs/VALIDATION.md).
+
+## Code cleanup — 13 October 2026
+
+- Standardized project source folders: project HTML stays at its existing directory URL, with local CSS and JavaScript under each project's `assets/`. Homepage responsive rules are now separate from its base styles.
+- Split HOLIX Ai into focused stylesheet and script controllers for navigation, workspace/composer, AI Tools, shared helpers, and TouchEvent handling. Deferred script order is checked automatically.
+- Removed unused HOLIX styles, obsolete scrollbar code, overwritten declarations, and redundant developer-portfolio media rules while retaining the existing layouts and breakpoint values.
+- Stabilized touch cancellation, focus during layout changes, composer focus styling, Browse history/search timing, and clipboard feedback. GUP's hero and catalogue share one product-details listener.
+- Preserved all page text, 21 image assets, licences, directory routes, the fixed-width mobile prompt, and the Home / Browse / Account menus. The site still needs no build step.
+
+Source checks, 1,268 DOM/event assertions, and 180 local HTTP page/asset requests passed. Rendered-browser and physical-device checks remain pending because a browser could not be installed in this environment. See [validation](docs/VALIDATION.md) and [integration guidance](docs/INTEGRATION.md), especially the obsolete-file deletion list.
+
+## Mobile AI Control Center — 12 October 2026
+
+Across mobile/tablet widths through 1366px, AI Control Center contains touch-operated category headings for HOLIX Hub (Connected Apps, Data Controls), Tasks Assistant (Overview), and Coding & Design (Overview). Lists start collapsed and only one opens at a time. TouchEvents handle right-to-open/left-to-close swipes and menu taps; keyboard/mouse buttons remain available. Submenu feedback is temporary, without persistent selected styling. Workspace Search is temporarily inactive, and New chat is icon-only without the footer divider. Your Projects, File Library, and Active Chats retain their mobile destinations. Wider desktop behaviour is preserved.
+
+GUP's Home and Browse mobile menus use TouchEvents for rightward opening, leftward closing, and temporary tap feedback below 1080px. Both side menus contain Home, Browse, Account in that order. The visible hamburger is removed; a keyboard/screen-reader opener remains. See [GUP notes](docs/GUP.md) for interaction and validation details.
+
+## HOLIX Ai tools navigation — 12 October 2026
+
+Wider desktop uses HOLIX Hub, Task Assistant, and Code & Design as expandable menu options, with a blue active state and nested settings items. The existing app list and filters live in Connected Apps; Data Controls and the two Overview pages remain starter pages. Mobile uses the tap-operated headings listed above. See [validation notes](docs/VALIDATION.md) for checks and visual-verification limits.
+
+## HOLIX Ai mobile workspace — 12 October 2026
+
+HOLIX Ai now uses its redesigned workspace across all mobile/tablet width bands through 1366px: a chat-title header, full-width swipe menu, Leonardo's profile row, New chat at the menu's bottom left, and model controls that animate with composer focus. Menus reset on exit and back/forward navigation. The wider desktop layout remains intact. Source and DOM/event checks passed; rendered-browser and physical-device verification remain pending.
+
+The mobile conversation fills the available viewport. Prompt controls collapse their row and gap when unfocused, expand when the composer receives focus, and restore the conversation space when focus leaves. The prompt keeps its available width as the controls appear. GUP's New Arrivals, Popular Games, and Recommendations links/placeholders are removed from both pages' header, mobile menu, and footer; the side menu now contains Home, Browse, and Account.
+
+## Responsive alignment — 12 October 2026
+
+HOLIX Ai, GUP (Home and Browse), and the Software Developer Portfolio now follow the portfolio's width breakpoint family: 1366px, 1079px, 767px, and 479px. Their layouts and visual styles remain project-specific. HOLIX Ai's later mobile workspace redesign uses the 1366px upper bound for every mobile/tablet band. See [validation notes](docs/VALIDATION.md) for the changes and verification limits.
+
 ## What's new in v4.1.0
 
 - Added a real-world redesign: Integrated the Software Developer Portfolio showcase and its case study into the portfolio.
@@ -48,8 +86,8 @@ HTML, CSS, and vanilla JavaScript. The site requires no package installation or 
 | Path | Contents |
 | --- | --- |
 | `index.html` | Portfolio homepage, case studies, capabilities, About, and contact |
-| `page/` | Project HTML, HOLIX/developer styles and scripts, GUP’s self-contained assets and Browse route, and the earlier About redirect |
-| `assets/css/` | Homepage styles and shared accessibility, motion, and return-navigation styles |
+| `page/` | Project HTML with local `assets/css/` and `assets/js/`, GUP’s Browse route, and the earlier About redirect |
+| `assets/css/` | Homepage base/responsive styles and shared accessibility, motion, and return-navigation styles |
 | `assets/js/` | Homepage email-copy interaction and shared directory-URL normalization |
 | `assets/images/` | Project previews, artwork, portraits, branding, and favicons |
 | `assets/licenses/` | Third-party icon licenses |

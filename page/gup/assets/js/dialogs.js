@@ -13,6 +13,17 @@ GUP.initDialogs = function () {
   }
 
   const dialogClosePromises = new WeakMap();
+  const dialogCloseFinishers = new WeakMap();
+
+  function closeImmediately(dialog) {
+    const finishClose = dialogCloseFinishers.get(dialog);
+    if (finishClose) {
+      finishClose();
+    } else {
+      if (dialog.open) dialog.close();
+      dialog.classList.remove('is-closing');
+    }
+  }
 
   function getAnimationTime(element) {
     const styles = getComputedStyle(element);
@@ -50,6 +61,7 @@ GUP.initDialogs = function () {
         dialog.close();
         dialog.classList.remove('is-closing');
         dialogClosePromises.delete(dialog);
+        dialogCloseFinishers.delete(dialog);
         resolve();
       }
 
@@ -60,6 +72,7 @@ GUP.initDialogs = function () {
       }
 
       dialog.addEventListener('animationend', handleAnimationEnd);
+      dialogCloseFinishers.set(dialog, finishClose);
       dialog.classList.add('is-closing');
       fallbackTimer = setTimeout(finishClose, getAnimationTime(dialog) + 50);
     });
@@ -104,5 +117,5 @@ GUP.initDialogs = function () {
     });
   });
 
-  return { open: openDialog, close: closeDialog };
+  return { open: openDialog, close: closeDialog, closeImmediately };
 };

@@ -70,7 +70,7 @@ GUP.createProducts = function (isBrowse) {
 
 /* Homepage product details; Browse deliberately uses page links instead. */
 GUP.initProductDetails = function ({ products, dialogs, cart }) {
-  const { $, $$, formatCurrency, replayAnimation } = GUP;
+  const { $, formatCurrency, replayAnimation } = GUP;
   const productDialog = $('#product-dialog');
   if (!productDialog) return;
   const ui = {};
@@ -103,7 +103,11 @@ GUP.initProductDetails = function ({ products, dialogs, cart }) {
     dialogs.open(productDialog, trigger);
   }
 
-  $$('[data-product]').forEach(button => button.addEventListener('click', () => showProduct(button.dataset.product, button)));
+  // Hero and catalogue product buttons share the same details controller.
+  $('#main').addEventListener('click', event => {
+    const button = event.target instanceof Element ? event.target.closest('[data-product]') : null;
+    if (button) showProduct(button.dataset.product, button);
+  });
 
   ui.detailAdd.addEventListener('click', () => {
     const feedback = ui.detailFeedback;

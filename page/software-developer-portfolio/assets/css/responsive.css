@@ -1,0 +1,368 @@
+/* Portfolio width breakpoints: 1366px, 1079px, 767px, and 479px.
+   Desktop foundations are in styles.css. */
+
+@media (max-width: 1366px) {
+  .project-hero {
+    min-height: 780px;
+  }
+
+  .project-hero__copy {
+    width: min(100%, 650px);
+  }
+
+  .experience-layout {
+    gap: 55px;
+  }
+
+  .experience-item {
+    gap: 35px;
+  }
+}
+
+@media (max-width: 1079px) {
+  :root {
+    --mobile-header-height: 84px;
+  }
+
+  section[id] {
+    scroll-margin-top: calc(var(--mobile-header-height) + 16px);
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .header-inner,
+  .main-nav {
+    min-height: var(--mobile-header-height);
+  }
+
+  .main-nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+  }
+
+  .wordmark img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .main-nav__primary,
+  .main-nav__contact {
+    display: none;
+  }
+
+  .main-nav__dropdown {
+    display: block;
+    position: relative;
+    justify-self: end;
+  }
+
+  .main-nav__toggle,
+  .main-nav__links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    color: inherit;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: -.0025em;
+    transition: color .2s;
+  }
+
+  .main-nav__toggle {
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .main-nav__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .main-nav__toggle::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+  }
+
+  .main-nav__dropdown[open] .main-nav__toggle::after {
+    transform: translateY(2px) rotate(225deg);
+  }
+
+  .main-nav__links {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: max-content;
+    min-width: min(220px, calc(100vw - 40px));
+    max-width: min(280px, calc(100vw - 40px));
+    max-height: calc(100dvh - var(--mobile-header-height) - 32px);
+    margin: 0;
+    padding: 8px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+    border: 1px solid rgb(194 206 217 / 18%);
+    border-radius: 4px;
+    background: var(--night);
+    box-shadow: 0 12px 28px rgb(0 0 0 / 24%);
+  }
+
+  .main-nav__links a {
+    padding: 8px 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .main-nav__toggle:hover,
+  .main-nav__links a:is(:hover, :focus-visible) {
+    color: var(--honey);
+  }
+
+  .main-nav__toggle:focus-visible,
+  .main-nav__links a:focus-visible {
+    outline-offset: 2px;
+  }
+
+  .project-row-details {
+    gap: 17px;
+  }
+
+  .project-hero__copy h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .grey-title__line--long {
+    white-space: normal;
+  }
+
+  .project-hero__copy > p:not(.project-lede) {
+    color: #e4e8ee;
+  }
+
+  .project-links {
+    gap: 8px 24px;
+  }
+
+  .facts div {
+    flex-basis: calc(50% - 24px);
+  }
+
+  .project-row-facts:not(.project-row-facts--sintel) {
+    flex-wrap: wrap;
+  }
+
+  .project-row-facts dd {
+    overflow-wrap: anywhere;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    width: min(100% - 38px, 1440px);
+  }
+
+  :root {
+    --mobile-header-height: 76px;
+  }
+
+  .main-nav__toggle,
+  .main-nav__links a {
+    font-size: calc(.78rem + 3px);
+  }
+
+  .about-section {
+    padding-top: 75px;
+  }
+
+  .about-section .intro-title {
+    font-size: clamp(4rem, 12vw, 6.5rem);
+    margin: 22px 0 24px;
+  }
+
+  .intro-subtitle {
+    margin-top: 14px;
+  }
+
+  .project-hero,
+  .project-hero__content {
+    min-height: 720px;
+  }
+
+  .project-hero::after,
+  .project-hero--copy-right::after {
+    background: linear-gradient(90deg, rgb(7 12 18 / 94%) 0%, rgb(7 12 18 / 78%) 57%, rgb(7 12 18 / 36%) 100%), linear-gradient(0deg, rgb(7 12 18 / 76%) 0%, transparent 58%, rgb(7 12 18 / 20%) 100%);
+  }
+
+  .project-hero--copy-right .project-hero__content {
+    justify-content: flex-start;
+  }
+
+  .project-hero__content {
+    padding-block: 68px;
+  }
+
+  .project-hero__copy {
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .project-hero__copy h2 {
+    font-size: clamp(3.35rem, 12vw, 6rem);
+  }
+
+  .project-hero--dawn .project-hero__media img {
+    object-position: 42% center;
+  }
+
+  .supporting {
+    padding: 85px 0 100px;
+  }
+
+  .project-row {
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .project-row-image,
+  .project-row-image img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .project-row-facts {
+    gap: 12px 20px;
+  }
+
+  .experience-layout {
+    display: block;
+  }
+
+  .experience-heading {
+    margin-bottom: 55px;
+  }
+
+  .experience-heading h2 {
+    font-size: clamp(2.7rem, 7.5vw, 4.5rem);
+  }
+
+  .experience-item {
+    gap: 16px;
+  }
+
+  .experience-logo {
+    width: 88px;
+    height: 52px;
+  }
+
+  .contact-section {
+    padding-bottom: 82px;
+  }
+
+  .contact-layout h2 {
+    font-size: clamp(2.175rem, 7.5vw, 6rem);
+  }
+
+  .contact-bottom {
+    align-items: flex-start;
+    margin-top: 46px;
+  }
+
+  .contact-channels {
+    justify-content: flex-start;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-meta {
+    align-items: flex-start;
+    min-width: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 479px) {
+  .wrap {
+    width: min(100% - 40px, 1440px);
+  }
+
+  .about-section .intro-title {
+    font-size: 3.3rem;
+  }
+
+  .experience-logo {
+    width: 80px;
+    height: 48px;
+  }
+
+  .main-nav__toggle,
+  .main-nav__links a {
+    font-size: .8125rem;
+  }
+
+  .project-hero,
+  .project-hero__content {
+    min-height: 0;
+  }
+
+  .project-hero__content {
+    padding-block: 56px;
+  }
+
+  .project-hero__copy {
+    gap: 20px;
+  }
+
+  .project-hero__copy h2 {
+    font-size: clamp(2.5rem, 11vw, 3.75rem);
+    line-height: 1.12;
+  }
+
+  .project-lede {
+    font-size: 1.3rem;
+  }
+
+  .project-hero::after,
+  .project-hero--copy-right::after {
+    background: linear-gradient(90deg, rgb(7 12 18 / 94%), rgb(7 12 18 / 86%));
+  }
+
+  .project-row {
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .experience-item {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .experience-date {
+    align-self: flex-start;
+    text-align: left;
+    margin-top: 16px;
+  }
+
+  .supporting-heading h2 {
+    font-size: clamp(2rem, 10vw, 2.9rem);
+  }
+
+  .contact-bottom {
+    gap: 24px;
+  }
+
+  .contact-channels {
+    gap: 12px;
+  }
+}
